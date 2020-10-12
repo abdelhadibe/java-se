@@ -21,24 +21,38 @@ public class User {
 	
 	private String pseudo;
 	
-	public String getPseudo() {
-		return pseudo;
+	/**
+	 * Age of this User instance
+	 */
+	private int age;
+	
+	public User() {
+		this.lastName = "anonymous";
+		this.firstName = "anonymous";
+		this.pseudo = "anonymous";
+		this.age = 0;
 	}
-	public void setPseudo(String pseudo) {
+	
+	public User(String lastname, String firstname, String pseudo, int age) {
+		this.lastName = lastname;
+		this.firstName = firstname;
 		this.pseudo = pseudo;
+		this.age = age;
 	}
-	public String getFirstName() {
-		return firstName;
+	
+	public User age(int age) {
+		this.age = age;
+		return this;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	
+	public int age() {
+		return this.age;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getLastName() {
-		return this.lastName;
-	}
+	
+
+	
+
+	
 	
 	/**
 	 * Sets the lastName of this User instance
@@ -72,5 +86,32 @@ public class User {
 	
 	public String firstName() {
 		return this.firstName;
+	}
+	
+	public User pseudo(String pseudo) {
+		this.pseudo = pseudo;
+		
+		return this;
+	}
+	
+	public String pseudo() {
+		return this.pseudo;
+	}
+	/**
+	 * Override toString method inherited from Java Super Object
+	 */
+	public String toString() {
+		return this.fullUser();
+	}
+	
+	private String fullUser() {
+		String out;
+		
+		out = "Name : " + this.lastName + "\n";
+		out += "Firstname : " + this.firstName + "\n";
+		out += "Pseudo : " + this.pseudo + "\n";
+		out += "Age :" + this.age + "\n";
+		
+		return out;
 	}
 }
