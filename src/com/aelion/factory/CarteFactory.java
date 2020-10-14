@@ -1,10 +1,10 @@
 package com.aelion.factory;
 
-import com.aelion.blackjack.As;
-import com.aelion.blackjack.Carte;
-import com.aelion.blackjack.Dame;
-import com.aelion.blackjack.Roi;
-import com.aelion.blackjack.Valet;
+import com.aelion.cards.As;
+import com.aelion.cards.Carte;
+import com.aelion.cards.Dame;
+import com.aelion.cards.Roi;
+import com.aelion.cards.Valet;
 
 public final class CarteFactory {
 	public static Carte getCarte(

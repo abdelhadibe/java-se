@@ -1,4 +1,4 @@
-package com.aelion.blackjack;
+package com.aelion.cards;
 
 abstract public class Carte extends Famille {
 	
@@ -21,4 +21,11 @@ abstract public class Carte extends Famille {
 		this.valeur = valeur;
 	}
 	
+	/**
+	 * Une méthode abstraite dans une classe parente
+	 * DOIT ETRE implémentée dans les classes filles spécifiques
+	 */
+	abstract public void retourner();
+	
+	abstract public Carte retourner(boolean next);
 }

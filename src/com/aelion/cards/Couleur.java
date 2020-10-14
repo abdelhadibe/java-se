@@ -1,4 +1,4 @@
-package com.aelion.blackjack;
+package com.aelion.cards;
 
 abstract public class Couleur {
 	private String name;

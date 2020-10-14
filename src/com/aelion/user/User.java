@@ -40,6 +40,11 @@ public class User {
 		this.age = age;
 	}
 	
+	public User(String lastname, String pseudo) {
+		this.lastName = lastname;
+		this.pseudo = pseudo;
+	}
+	
 	public User age(int age) {
 		this.age = age;
 		return this;

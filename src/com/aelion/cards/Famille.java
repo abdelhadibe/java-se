@@ -1,4 +1,4 @@
-package com.aelion.blackjack;
+package com.aelion.cards;
 
 abstract public class Famille extends Couleur {
 	private String nom;
