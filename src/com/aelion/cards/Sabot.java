@@ -8,9 +8,7 @@ import java.util.List;
 import com.aelion.factory.CarteFactory;
 
 public class Sabot {
-	/**
-	 * @todo Prefer extract this implementation in a Collection
-	 */
+
 	public List<Carte> setCartes() {
 		List<Carte> sabot = new ArrayList<Carte>();
 				

@@ -8,6 +8,7 @@ import com.aelion.cards.Sabot;
 import com.aelion.interfaces.Jouable;
 import com.aelion.interfaces.Players;
 import com.aelion.user.User;
+import com.aelion.user.UserCollection;
 import com.aelion.utils.RandomInteger;
 
 public class BlackJack implements Jouable, Players {
@@ -18,12 +19,12 @@ public class BlackJack implements Jouable, Players {
 	private List<Carte> sabot;
 	
 	public BlackJack() {
-		players = new HashMap<String, User>();
+		this.players = new HashMap<String, User>();
 		
 		// Two players : Bank and User
 		try {
-			addPlayer("Banque", new User("Casino", "Banque"));
-			addPlayer("JL", new User("Jean-Luc", "JL"));
+			this.addPlayer("Banque", new User("Casino", "Banque"));
+			this.addPlayer("Player", new User("Jean-Luc", "JL"));
 		} catch(Exception e) {
 			e.getMessage();
 		}
@@ -32,6 +33,39 @@ public class BlackJack implements Jouable, Players {
 		this.sabot = new Sabot().setCartes();
 	}
 
+	public BlackJack(User bank, User player) {
+		try {
+			this.addPlayer("Banque", bank);
+		} catch(Exception e) {
+			System.out.println("No more player were accepted");
+		}
+		
+		try {
+			this.addPlayer("Player", player);
+		} catch(Exception e) {
+			System.out.println("No more player were accepted");
+		}
+		
+		// Create cards sabot
+		this.sabot = new Sabot().setCartes();
+	}
+	
+	public BlackJack(UserCollection users) {
+		try {
+			this.addPlayer("Bank", users.get(0));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			this.addPlayer("Player", users.get(1));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Unused method for this context
 	 */
@@ -42,20 +76,23 @@ public class BlackJack implements Jouable, Players {
 	
 	@Override
 	public void addPlayer(String whatOf, User user) throws Exception {
-		if (players.size() < BlackJack.MAX_PLAYERS) {
+		if (this.players.size() < BlackJack.MAX_PLAYERS) {
 			// TODO Auto-generated method stub
-			players.put(whatOf, user);
+			this.players.put(whatOf, user);
+		} else {
+			throw new Exception("Blackjack cannot have more than " + BlackJack.MAX_PLAYERS + " players");
 		}
-		throw new Exception("Blackjack cannot have more than " + BlackJack.MAX_PLAYERS + " players");
+		
 	}
+	
 	@Override
 	public void jouer() {
 		// Bank plays
 		User bank = players.get("Banque");
-		Carte bankPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
+		Carte bankPlayedCard = this.sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
 		
 		// Then player plays
-		Carte userPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
+		Carte userPlayedCard = this.sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
 		
 		// @todo prefer implements Comparable interface to Carte
 		//	so you can use compareTo between bank and player's card played
