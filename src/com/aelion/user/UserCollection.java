@@ -25,6 +25,6 @@ public final class UserCollection {
 	}
 	
 	public int size() {
-		return this.users.length;
+		return this.userCounter;
 	}
 }
