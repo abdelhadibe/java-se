@@ -1,13 +1,10 @@
 package com.aelion.blackjack;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import com.aelion.cards.Carte;
 import com.aelion.cards.Sabot;
-import com.aelion.factory.CarteFactory;
 import com.aelion.interfaces.Jouable;
 import com.aelion.interfaces.Players;
 import com.aelion.user.User;
@@ -35,6 +32,9 @@ public class BlackJack implements Jouable, Players {
 		this.sabot = new Sabot().setCartes();
 	}
 
+	/**
+	 * Unused method for this context
+	 */
 	@Override
 	public void addPlayer(User user) {
 		// TODO Auto-generated method stub
@@ -52,10 +52,14 @@ public class BlackJack implements Jouable, Players {
 	public void jouer() {
 		// Bank plays
 		User bank = players.get("Banque");
-		Carte bankPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size() - 1));
+		Carte bankPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
 		
 		// Then player plays
-		Carte userPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size() - 1));
+		Carte userPlayedCard = sabot.get(RandomInteger.getRandomInteger(sabot.size(), true));
+		
+		// @todo prefer implements Comparable interface to Carte
+		//	so you can use compareTo between bank and player's card played
+		// Got negative, positive or 0
 		
 		// Finally compare bank's card and player's card
 		if (bankPlayedCard.getValeur() > userPlayedCard.getValeur()) {

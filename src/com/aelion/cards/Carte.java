@@ -28,4 +28,5 @@ abstract public class Carte extends Famille {
 	abstract public void retourner();
 	
 	abstract public Carte retourner(boolean next);
+	
 }
