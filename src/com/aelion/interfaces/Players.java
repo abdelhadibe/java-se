@@ -4,5 +4,5 @@ import com.aelion.user.User;
 
 public interface Players {
 	public void addPlayer(User user);
-	public void addPlayer(String whatOf, User user) throws Exception;
+	public void addPlayer(String userIndex, User user) throws Exception;
 }

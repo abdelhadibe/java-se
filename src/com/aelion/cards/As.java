@@ -23,4 +23,13 @@ public final class As extends Carte {
 		return this;
 	}
 
+	@Override
+	public int compareTo(Carte autreCarte) {
+		if (autreCarte instanceof As) {
+			return 0;
+		}
+		// TODO Auto-generated method stub
+		return 100;
+	}
+
 }

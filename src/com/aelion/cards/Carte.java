@@ -1,6 +1,6 @@
 package com.aelion.cards;
 
-abstract public class Carte extends Famille {
+abstract public class Carte extends Famille implements Comparable<Carte> {
 	
 	protected String name; // As, Roi, Dame, ...
 	protected int valeur;
@@ -28,5 +28,9 @@ abstract public class Carte extends Famille {
 	abstract public void retourner();
 	
 	abstract public Carte retourner(boolean next);
+	
+	public int compareTo(Carte carte) {
+		return this.valeur - carte.valeur;
+	}
 	
 }
