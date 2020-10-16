@@ -9,19 +9,32 @@ import java.util.stream.Stream;
 public final class Keyboard {
 	private static Scanner keyboard = new Scanner(System.in);
 	private static String userResponse = null;
+	
+	private static String prompt;
+	
+	public static boolean readBool() {
+		Keyboard.prompt = "Répondre par ";
+		return Keyboard._readBool();
+	}
+	
+	public static boolean readBool(String prompt) {
+		Keyboard.prompt = prompt;
+		return Keyboard._readBool();
+	}
+	
 	/**
 	 * Usage : boolean status = Keyboard.readBool()
 	 * @return 
 	 * @return 
 	 * @return
 	 */
-	public static boolean readBool() {
+	private static boolean _readBool() {
 		String[] responses = {"oui", "non", "o", "n"};
 		boolean outputStatus = false;
 		
 		// Boucler sur une entrée utilisateur...
 		while (userResponse == null) {
-			System.out.print("Répondre par [oui - o - non - n] : ");
+			System.out.print(Keyboard.prompt + " [oui - o - non - n] : ");
 			userResponse = Keyboard.keyboard.next();
 			
 			Iterable<String> responseStream = Arrays.asList(responses);
@@ -36,7 +49,7 @@ public final class Keyboard {
 				// La réponse est acceptable
 				// Quelle est la réponse...
 				
-				if (answer.equals("oui") || answer.equals("o")) {
+				if (answer.get().equals("oui") || answer.get().equals("o")) {
 					outputStatus = true;
 				} else {
 					outputStatus = false;

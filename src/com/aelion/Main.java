@@ -25,8 +25,6 @@ public class Main {
 				.firstName("Jean-Luc")
 				.pseudo("Winner");
 		
-		boolean response = Keyboard.readBool();
-		System.out.println(response ? "User responds okay" : "User responds ko");
 		
 		// Let's play blackjack
 		BlackJack game = new BlackJack(bank, player);

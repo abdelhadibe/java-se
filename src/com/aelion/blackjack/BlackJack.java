@@ -10,6 +10,7 @@ import com.aelion.interfaces.Jouable;
 import com.aelion.interfaces.Players;
 import com.aelion.user.User;
 import com.aelion.user.UserCollection;
+import com.aelion.utils.Keyboard;
 import com.aelion.utils.RandomInteger;
 
 public class BlackJack implements Jouable, Players {
@@ -121,8 +122,11 @@ public class BlackJack implements Jouable, Players {
 			System.out.println("Card values was equal, play again");
 		}
 		
-		if (this.read()) {
+		if (Keyboard.readBool("Voulez-vous une autre carte ?")) {
+			System.out.println("Next pick");
 			this.jouer();
+		} else {
+			System.out.println("Stop it");
 		}
 	}
 	
@@ -133,23 +137,5 @@ public class BlackJack implements Jouable, Players {
 		return output;
 	}
 	
-	private boolean read() {
-		Scanner keyboard = new Scanner(System.in);
-		
-		System.out.print("Voulez vous continuer [oui / non] ?");
-		
-		String response = null;
-		
-		while(response == null) {
-			response = keyboard.next();
-			if (
-				response.equalsIgnoreCase("oui") || 
-				response.equalsIgnoreCase("o") 
-			) {
-				return true;
-			}
-			return false;
-		}
-		return false;
-	}
+
 }
