@@ -4,15 +4,23 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.aelion.database.mysql.MySqlConnect;
 import com.aelion.models.Actor;
+import com.aelion.models.Model;
+import com.aelion.repositories.ActorRepository;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		Actor actor = new Actor();
+		ActorRepository repository = new ActorRepository(actor);
+		ArrayList<Model> actors = repository.findAll();
+		System.out.println("Il y a " + actors.size() + " lignes dans la table");
+		
+		
 		
 		Connection db = MySqlConnect.getInstance();
 		System.out.println("Try to get another instance");
