@@ -6,10 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.aelion.database.mysql.MySqlConnect;
+import com.aelion.models.Actor;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		Actor actor = new Actor();
+		
 		Connection db = MySqlConnect.getInstance();
 		System.out.println("Try to get another instance");
 		db = MySqlConnect.getInstance();
@@ -25,7 +29,7 @@ public class Main {
 			
 			
 			Statement statement = db.createStatement();
-			ResultSet res = statement.executeQuery("SELECT actor_id, first_name, last_name FROM actor;");
+			ResultSet res = statement.executeQuery(actor.select());
 			
 			res.last();
 			System.out.println("res contains " + res.getRow() + " rows");
